@@ -12,5 +12,8 @@
   "bugs": {
     "url": "https://github.com/scastro37/matchbox/issues"
   },
-  "homepage": "https://github.com/scastro37/matchbox#readme"
+  "homepage": "https://github.com/scastro37/matchbox#readme",
+  "dependencies": {
+    "shelljs": "^0.8.4"
+  }
 }
