@@ -1,0 +1,16 @@
+{
+  "name": "matchbox",
+  "version": "1.0.0",
+  "description": "Module to run prettier and eslint configuraction shell",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scastro37/matchbox.git"
+  },
+  "author": "Sebastian Castro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scastro37/matchbox/issues"
+  },
+  "homepage": "https://github.com/scastro37/matchbox#readme"
+}
