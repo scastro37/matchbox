@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 if [[ -z "$1" ]]; then
   TYPE='"@scastro37/eslint-config/configJS"';
-if [ $1 == 'js' ] || [ $1 == 'JS']; then
+elif [ $1 == 'js' ] || [ $1 == 'JS']; then
     TYPE='"@scastro37/eslint-config/configJS"';
 elif [ $1 == "ts" ] || [ $1 == "TS" ]; then
     TYPE='"@scastro37/eslint-config/configTS"'; fi
@@ -52,4 +52,4 @@ do
   else
     cd ..; fi
   COUNT=$(($COUNT+1))
-done
+done;
