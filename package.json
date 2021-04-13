@@ -1,6 +1,6 @@
 {
   "name": "@scastro37/matchbox",
-  "version": "1.0.23",
+  "version": "1.0.26",
   "description": "Module to run prettier and eslint configuraction shell",
   "main": "./bin/files-config.sh",
   "repository": {
