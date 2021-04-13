@@ -21,6 +21,7 @@ if test "$ACTION" = "i" -o "$ACTION" = "I"; then
   if [ -f .prettierrc ];then rm .prettierrc;fi
   if [ -f .prettier.config.js ];then rm .prettier.config.js;fi
   if [ -f .prettier.config.json ];then rm .prettier.config.json;fi
+  npm uninstall eslint husky
   npm i eslint@7.23.0 @scastro37/prettier-config @scastro37/eslint-config @scastro37/matchbox husky@6.0.0 -D --force
   ESLINT="module.exports = {extends: [${TYPE}]};"
   PRETTIER='"@scastro37/prettier-config"'
@@ -62,6 +63,10 @@ if test "$ACTION" = "i" -o "$ACTION" = "I"; then
       cd ..; fi
     COUNT=$(($COUNT+1))
   done;
+
+  cd $RUTA
+  npm run lint-global;
+  
 elif test "$ACTION" = "u" -o "$ACTION" = "U"; then
   if [ -f .eslintrc.js ];then rm .eslintrc.js;fi  
   if [ -f .eslintrc.json ];then rm .eslintrc.json;fi
