@@ -2,12 +2,9 @@
 bold=`tput bold`
 normal=`tput sgr0`
 grey=`tput setaf 8`
+red=`tput setaf 1`
 
-Install(){
-  bold=`tput bold`
-  normal=`tput sgr0`
-  grey=`tput setaf 8`
-
+AskType(){
   read -n 2 -p "${bold}JavaScript or TypeScript$*? ${normal}(js/ts) ${grey}[js]${normal}: " TYPE
   echo
   if test "$TYPE" = "js" -o "$TYPE" = "JS"; then
@@ -16,7 +13,9 @@ Install(){
     TYPE='"@scastro37/eslint-config/configTS"';
   else
     TYPE='"@scastro37/eslint-config/configJS"'; fi
+}
 
+RunInstall(){
   if [ -f .eslintrc.js ];then rm .eslintrc.js;fi
   if [ -f .eslintrc.json ];then rm .eslintrc.json;fi
   if [ -f .eslintrc ];then rm .eslintrc;fi
@@ -55,7 +54,7 @@ Install(){
 
   touch .eslintignore .prettierignore
 
-  node ./node_modules/@scastro37/prettier-config/mrm-config
+  node ./node_modules/@scastro37/prettier-config/mrm-config $LISTIGNORE
 
   if [ -d node_modules ]; then
     if [ ! -f .gitignore ]; then
@@ -78,9 +77,27 @@ Install(){
   npm run lint-global
 }
 
+Install(){
+  read -p "${bold}Omit directories or files$* ${normal}${grey}(separate with space)${normal}: " LISTIGNORE
+  echo "[${red}$LISTIGNORE${normal}]"
+  read -n 1 -p "${bold}$*Are you sure you want to ignore these files/directories? ${normal}(y/n) ${grey}[y]${normal}: " CONFIRM
+
+  if test "$CONFIRM" = "y" -o "$CONFIRM" = "Y"; then
+    echo
+    RunInstall
+    
+  elif test "$CONFIRM" = "y" -o "$CONFIRM" = "Y"; then
+    echo 
+    Install
+  else 
+    echo
+    RunInstall; fi
+}
+
 read -n 1 -p "${bold}Install or Uninstall$*? ${normal}(i/u) ${grey}[i]${normal}: " ACTION
 echo 
-if test "$ACTION" = "i" -o "$ACTION" = "I"; then 
+if test "$ACTION" = "i" -o "$ACTION" = "I"; then
+  AskType
   Install;
   
 elif test "$ACTION" = "u" -o "$ACTION" = "U"; then
@@ -104,4 +121,5 @@ elif test "$ACTION" = "u" -o "$ACTION" = "U"; then
   rm package-lock.json
   npm i;
 else 
+  AskType
   Install; fi
