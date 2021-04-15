@@ -1,4 +1,4 @@
-Este módulo proporciona una ayuda útil para crear la configuracion nencesaria y ejecutar Prettier ESLint y Git Hooks con los repositorios de [@scastro37/prettier-config](https://github.com/scastro37/prettier-config) y [@scastro37/eslint-config](https://github.com/scastro37/eslint-config)
+This module provides a useful help to create the necessary configuration and run Prettier ESLint and Git Hooks with the repositories of [@scastro37/prettier-config](https://github.com/scastro37/prettier-config) and [@scastro37/eslint-config](https://github.com/scastro37/eslint-config)
 
 ## Compatibility
 
@@ -11,31 +11,31 @@ To use the library you just need to follow the following steps:
 ```js
 npx @scastro37/matchbox
 ```
-- Selecciona la opcion de instalar 
+- Select the option to install.
 ```js
 Install or Uninstall? (i/u) [i]: i
 ```
-- Selecciona el tipo de proyecto **JavaScript** o **TypeScript**
+- Select the type of project **JavaScript** or **TypeScript**
 ```js
 JavaScript or TypeScript? (js/ts) [js]:
 ```
-- Listar capetas o archivos separados por espacio, que se quiere ignorar en la configuracion
+- List space-separated folders or files, which you want to ignore in configuration.
 ´´´js
 Omit directories or files (separate with space): node_modules dist *.svg
 ´´´
-- Al final de la instalacion se ejecutar el script de **lint-global** el cual realizara el formato y analizara errores y advertencias en todos los archivos del proyecto
+- At the end of the installation the script run **lint-global**, which will format and analyze errors and warnings in all project files.
 
-Nota:
-Para analizar y corregir errores con ESLint ejecutar el script **npm run lint**
+Note:
+To analyze and correct errors with ESLint run the following script **npm run lint**
 
 ### Description Script
-El script realiza los siguientes cambio en nuestro poryecto
-- Remueve toda la configuracion de ESLint y Prettier que encuentre.
-- Instala las siguintes dependecias **eslint@7.23.0, @scastro37/prettier-config, @scastro37/eslint-config, husky@6.0.0**
-- Agrega la configuracion de Prettier de [@scastro37/prettier-config](https://github.com/scastro37/prettier-config) y tambien agrega la configuración de ESLint de [@scastro37/eslint-config](https://github.com/scastro37/eslint-config).
-- Crea **.prettierignore** y **.eslintignore** para ignorar directorios o archivos.
-- Crea la configuracion en **.husky** y añade **lint-satged** al archivo **package.json** para la ejecucion de **pre-commit**
-- Añade script de ejecucion de Prettier y ESLint al **package.json**
+The script makes the following changes to our project
+- Removes all ESLint and Prettier settings it finds.
+- It will install the following dependencies **eslint@7.23.0, @scastro37/prettier-config, @scastro37/eslint-config, husky@6.0.0**
+- It will add Prettier's configuration of [@scastro37/prettier-config](https://github.com/scastro37/prettier-config) and will also add the ESLint's configuration of [@scastro37/eslint-config](https://github.com/scastro37/eslint-config).
+- It will create **.prettierignore** and **.eslintignore** to ignore directories or files.
+- It will create the configuration in **.husky** and add **lint-satged** to file **package.json** for the execution of **pre-commit**
+- Add Prettier and ESLint execution script to **package.json**
 - A small configuration is added in **.vscode/settings.json** to be able to use when saving changes.
 ```js
 {
@@ -56,15 +56,15 @@ El script realiza los siguientes cambio en nuestro poryecto
 ```js
 npx @scastro37/matchbox
 ```
-- Seleccione la opcion de desinstalar
+- Select the option to uninstall
 ```js
 Install or Uninstall? (i/u) [i]: u
 ```
 ### Description Uninstall Script
 
-- Remueve los archivos de configuracion de **ESLint** y **Prettier**
-- Remueve configuracion creada en el **package.json**
-- Desinstala las dependencias **eslint, @scastro37/prettier-config, @scastro37/eslint-config, husky**
+- Removes the configuration files from **ESLint** y **Prettier**
+- Removes configuration created in the **package.json**
+- Uninstall dependencies **eslint, @scastro37/prettier-config, @scastro37/eslint-config, husky**
 
 ## Contributors
 
