@@ -16,6 +16,8 @@ AskType(){
 }
 
 RunInstall(){
+  find . -type d -name node_modules -prune -false -o -name '.eslint**' ! -name '.eslintignore' -delete
+  find . -type d -name node_modules -prune -false -o -name '.prettier**' ! -name '.prettierignore' -delete
   if [ -f .eslintrc.js ];then rm .eslintrc.js;fi
   if [ -f .eslintrc.json ];then rm .eslintrc.json;fi
   if [ -f .eslintrc ];then rm .eslintrc;fi
@@ -32,16 +34,6 @@ RunInstall(){
   npm i eslint@7.23.0 @scastro37/prettier-config @scastro37/eslint-config @scastro37/matchbox husky@6.0.0 -D --force
   ESLINT="module.exports = {extends: [${TYPE}]};"
   PRETTIER='"@scastro37/prettier-config"'
-  SETTINGS='{
-    "[javascript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.formatOnSave": true
-    },
-    "[typescript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.formatOnSave": true
-    }
-  }'
   GITIGNORE="node_modules"
 
   printf "${PRETTIER} %s\n" > .prettierrc
@@ -53,6 +45,9 @@ RunInstall(){
   else touch .vscode/setting.json; fi;
 
   touch .eslintignore .prettierignore
+
+  SEARCH_PACKAGES=$( find . -type d -name node_modules -prune -false -o -name 'package.json' )
+  node ./node_modules/@scastro37/prettier-config/mrm-remove $SEARCH_PACKAGES
 
   node ./node_modules/@scastro37/prettier-config/mrm-config $LISTIGNORE
 
@@ -79,14 +74,17 @@ RunInstall(){
 
 Install(){
   read -p "${bold}Omit directories or files$* ${normal}${grey}(separate with space)${normal}: " LISTIGNORE
-  echo "[${red}$LISTIGNORE${normal}]"
-  read -n 1 -p "${bold}$*Are you sure you want to ignore these files/directories? ${normal}(y/n) ${grey}[y]${normal}: " CONFIRM
+  if [ "$LISTIGNORE" ]; then
+    echo "[${red}$LISTIGNORE${normal}]"
+    read -n 1 -p "${bold}$*Are you sure you want to ignore these files/directories? ${normal}(y/n) ${grey}[y]${normal}: " CONFIRM
+  else
+    read -n 1 -p "${bold}$*Sure you don't want to ignore any files/directories? ${normal}(y/n) ${grey}[y]${normal}: " CONFIRM; fi
 
   if test "$CONFIRM" = "y" -o "$CONFIRM" = "Y"; then
     echo
     RunInstall
     
-  elif test "$CONFIRM" = "y" -o "$CONFIRM" = "Y"; then
+  elif test "$CONFIRM" = "n" -o "$CONFIRM" = "N"; then
     echo 
     Install
   else 
