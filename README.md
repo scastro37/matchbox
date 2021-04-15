@@ -1,4 +1,4 @@
-This module provides a useful help to create the necessary configuration and run Prettier ESLint and Git Hooks with the repositories of [@scastro37/prettier-config](https://github.com/scastro37/prettier-config) and [@scastro37/eslint-config](https://github.com/scastro37/eslint-config)
+Currently, when development teams have many projects, it is very tedious to create a configuration for each project in order to maintain a clear and understandable code.This module helps to create the configuration of Prettier, ESLint and Git Hooks, with the repositories of [@scastro37/prettier-config](https://github.com/scastro37/prettier-config) and [@scastro37/eslint-config](https://github.com/scastro37/eslint-config) to solve the problems without the need for the developer to make manual configurations.
 
 ## Compatibility
 
