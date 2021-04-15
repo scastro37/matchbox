@@ -20,9 +20,9 @@ Install or Uninstall? (i/u) [i]: i
 JavaScript or TypeScript? (js/ts) [js]:
 ```
 - List space-separated folders or files, which you want to ignore in configuration.
-´´´js
+```js
 Omit directories or files (separate with space): node_modules dist *.svg
-´´´
+```
 - At the end of the installation the script run **lint-global**, which will format and analyze errors and warnings in all project files.
 
 Note:
